@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Artifact Information -->
+    <groupId>org.basinmc.maven.plugins</groupId>
+    <artifactId>bsdiff-maven-plugin-example</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.basinmc.maven.plugins</groupId>
+                <artifactId>bsdiff-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+
+                <executions>
+                    <execution>
+                        <id>fileDiff</id>
+
+                        <goals>
+                            <goal>diff</goal>
+                        </goals>
+
+                        <configuration>
+                            <sourceFile>${project.basedir}/src/input.png</sourceFile>
+                            <target>${project.basedir}/src/output.png</target>
+                            <outputFile>${project.build.directory}/file-diff.bsdiff</outputFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>artifactDiff</id>
+
+                        <goals>
+                            <goal>diff</goal>
+                        </goals>
+
+                        <configuration>
+                            <sourceArtifact>
+                                <groupId>com.google.code.findbugs</groupId>
+                                <artifactId>jsr305</artifactId>
+                                <version>3.0.1</version>
+                            </sourceArtifact>
+
+                            <target>${project.basedir}/src/output.png</target>
+                            <outputFile>${project.build.directory}/artifact-diff</outputFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>uriDiff</id>
+
+                        <goals>
+                            <goal>diff</goal>
+                        </goals>
+
+                        <configuration>
+                            <sourceURL>https://www.apache.org/licenses/LICENSE-2.0.txt</sourceURL>
+                            <target>${project.basedir}/src/output.png</target>
+                            <outputFile>${project.build.directory}/uri-diff</outputFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
