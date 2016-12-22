@@ -89,7 +89,7 @@ public class DiffMojo extends AbstractMojo {
 
     @Parameter(defaultValue = "true")
     private boolean attach;
-    @Parameter(defaultValue = "bsdiff")
+    @Parameter
     private String classifier;
     // </editor-fold>
 
